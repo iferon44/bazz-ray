@@ -30,5 +30,4 @@ jobs:
           recipe: ${{ matrix.recipe }}
           registry_token: ${{ github.token }}
           pr_event_number: ${{ github.event.number }}
-          use_unstable_signing: false
           maximize_build_space: true

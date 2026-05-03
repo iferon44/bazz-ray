@@ -16,4 +16,4 @@ jobs:
           image_name: my-bazzite
           image_repo: ghcr.io/iferon44
           image_tag: latest
-          variant: 'KDE' # Укажи 'KDE', если используешь стандартный Bazzite
+          variant: 'Kinoite'

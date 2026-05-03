@@ -21,10 +21,13 @@ modules:
     repos:
       copr:
         - atim/starship
+      urls:
+        - https://brave-browser-rpm-nightly.s3.brave.com/brave-browser-nightly.repo
     install:
       packages:
         - micro
         - starship
+        - brave-browser-nightly
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)

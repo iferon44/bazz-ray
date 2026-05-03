@@ -26,6 +26,8 @@ jobs:
     steps:
       - name: Build Custom Image
         uses: blue-build/github-action@v1.11
+        env:
+          BUILD_OPTS: --no-sign
         with:
           recipe: ${{ matrix.recipe }}
           registry_token: ${{ github.token }}

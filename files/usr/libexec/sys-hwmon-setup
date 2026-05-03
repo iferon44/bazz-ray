@@ -1,0 +1,8 @@
+#!/bin/bash
+# sys-hwmon-setup - Hardware monitor setup script
+# Placed at /usr/libexec/sys-hwmon-setup
+
+set -euo pipefail
+
+# Setup hardware monitoring
+exec "$@"

@@ -17,11 +17,13 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
+  - type: copr
+    copr:
+      - atim/starship
+
   - type: rpm-ostree
     repos:
       - https://brave-browser-rpm-nightly.s3.brave.com/brave-browser-nightly.repo
-    copr:
-      - atim/starship
     install:
       - micro
       - starship

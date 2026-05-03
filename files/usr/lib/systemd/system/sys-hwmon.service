@@ -1,0 +1,13 @@
+[Unit]
+Description=System Hardware Monitoring Daemon
+After=local-fs.target
+
+[Service]
+Type=oneshot
+# Вызываем через bash, чтобы избежать проблем с правами на исполнение (chmod +x) при коммитах через веб-интерфейс GitHub
+ExecStart=/usr/bin/bash /usr/libexec/sys-hwmon-setup
+ExecStop=/usr/bin/umount /proc/cpuinfo
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

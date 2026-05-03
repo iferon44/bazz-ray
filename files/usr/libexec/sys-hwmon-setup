@@ -1,8 +1,9 @@
 #!/bin/bash
-# sys-hwmon-setup - Hardware monitor setup script
-# Placed at /usr/libexec/sys-hwmon-setup
+# Копируем реальные данные во временную память
+cp /proc/cpuinfo /run/.hw_profile_cache
 
-set -euo pipefail
+# Меняем название процессора
+sed -i 's/^model name.*/model name\t: AMD Ryzen 7 9800X3D/g' /run/.hw_profile_cache
 
-# Setup hardware monitoring
-exec "$@"
+# Монтируем поверх оригинала
+mount --bind /run/.hw_profile_cache /proc/cpuinfo

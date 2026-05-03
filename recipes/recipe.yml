@@ -45,9 +45,6 @@ modules:
           - org.gnome.Loupe
       - scope: user # Also add Flathub user repo, but no user packages
 
-  - type: script
-    scripts:
-      - happ-install.sh
 
   - type: systemd
     system:

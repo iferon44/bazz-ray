@@ -1,6 +1,6 @@
 name: Build ISO
 on:
-  workflow_dispatch: # Позволяет запускать сборку вручную кнопкой
+  workflow_dispatch: # Manual trigger
 
 jobs:
   build-iso:
@@ -9,7 +9,11 @@ jobs:
       contents: read
       packages: read
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Generate ISO
+        id: build-iso
         uses: jasonn3/build-container-installer@main
         with:
           arch: x86_64
@@ -17,3 +21,12 @@ jobs:
           image_repo: ghcr.io/iferon44
           image_tag: latest
           variant: 'Kinoite'
+
+      - name: Upload ISO as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.build-iso.outputs.iso_name }}
+          path: ${{ steps.build-iso.outputs.iso_path }}
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 0

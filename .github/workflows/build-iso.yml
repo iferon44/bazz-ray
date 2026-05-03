@@ -1,0 +1,19 @@
+name: Build ISO
+on:
+  workflow_dispatch: # Позволяет запускать сборку вручную кнопкой
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - name: Generate ISO
+        uses: jasonn3/build-container-installer@main
+        with:
+          arch: x86_64
+          image_name: my-bazzite
+          image_repo: ghcr.io/iferon44
+          image_tag: latest
+          variant: 'KDE' # Укажи 'KDE', если используешь стандартный Bazzite
